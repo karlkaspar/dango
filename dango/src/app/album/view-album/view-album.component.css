@@ -1,0 +1,13 @@
+.photo {
+  min-height: 250px;
+  width: 200px;
+  cursor: pointer;
+}
+.photo img {
+  height: 150px;
+  width: 200px;
+}
+
+.photo span {
+  text-transform: capitalize;
+}

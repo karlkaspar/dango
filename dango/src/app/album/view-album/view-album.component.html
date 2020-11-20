@@ -1,0 +1,26 @@
+<div class="container bg-light">
+  <div *ngIf="album" class="row">
+    <div class="upper col-12 d-flex justify-content-between mb-5">
+      <div class="title">
+        <h1>{{album.title}}</h1>
+      </div>
+      <div class="actions d-inherit">
+        <button type="button" class="btn btn-success mx-2 " (click)="addPhoto()"> New photo </button>
+        <button type="button" class="btn btn-success mx-2 " (click)="createAlbum()"> New Album </button>
+        <button type="button" class="btn btn-danger" (click)="deleteAlbum()"> Delete Album </button>
+      </div>
+    </div>
+    <div *ngIf="photos" class="d-flex flex-row flex-wrap justify-content-between">
+      <div *ngFor="let photo of photos" class="photo mx-2 my-2 d-flex flex-column bg-white">
+        <img [src]="photo.thumbnailUrl" alt="">
+        <span class="my-2 px-2">{{ photo.title }}</span>
+        <div class="actions d-flex justify-content-between mt-auto px-2">
+          <button class="btn btn-info">
+            <a href="{{photo.url}}" class="text-white">View</a>
+          </button>
+          <button class="btn btn-danger" (click)="deletePhoto(photo.id)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

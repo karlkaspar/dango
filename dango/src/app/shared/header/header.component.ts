@@ -6,10 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
   constructor() { }
-
+  currentUserId = 1; // HARDCODED BECAUSE NO OTHER, OBVIOUS WAY EXIST TO GET THIS NUMBER
   ngOnInit() {
   }
-
 }

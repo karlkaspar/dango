@@ -1,0 +1,70 @@
+<div class="container bg-light">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="mb-5">Users</h1>
+      <table class="table">
+        <thead>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Phone</th>
+          <th>Website</th>
+          <th>Company</th>
+          <th>Actions</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+              {{ user.address.city }}, {{ user.address.street }}, {{ user.address.suite }}
+              <span class="d-block"> zip: {{ user.address.zipcode }} </span>
+            </td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.website }}</td>
+            <td>{{ user.company.name }}</td>
+            <td>
+              <button (click)="showAlbums(user.id, user.name)" class="btn btn-link">View albums</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<ng-template #albumsModal class="raised">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Albums of {{ albumsModalName }}</h5>
+      <button type="button" class="close" (click)="closeModal()"> X </button>
+    </div>
+    <div class="modal-body">
+      <table *ngIf="userAlbums" class="table w-100">
+        <thead>
+          <th>Name</th>
+          <th>Actions</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let album of userAlbums " class="text-capitalize">
+            <td>
+              {{ album.title }}
+            </td>
+            <td>
+              <a (click)="goToAlbum(album.id)">
+                <button class="btn btn-link">View</button>
+              </a>
+              <a (click)="deleteAlbum(album.id)">
+                <button class="btn btn-link">Delete</button>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <span *ngIf="!userAlbums">No albums to show </span>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-success" (click)="createAlbum()">New album</button>
+      <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+    </div>
+  </div>
+</ng-template>

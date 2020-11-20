@@ -1,0 +1,46 @@
+<div class="container bg-light">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="mb-5">User</h1>
+      <div class="d-flex flex-row">
+        <div class="left px-2">
+          <img src="https://www.gstatic.com/tv/thumb/persons/487578/487578_v9_ba.jpg" alt="">
+        </div>
+        <div class="right px-2">
+          <h2>User metrics</h2>
+          <ul *ngIf="metrics">
+            <li>Albums created: {{ metrics.albumsCreated ? metrics.albumsCreated : 0 }}</li>
+            <li>Albums deleted: {{ metrics.albumsDeleted ? metrics.albumsDeleted : 0 }}</li>
+            <li>Photos added: {{ metrics.photosDeleted ? metrics.photosDeleted : 0 }}</li>
+            <li>Photos deleted: {{ metrics.photosDeleted ? metrics.photosDeleted : 0 }}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="lower my-5">
+        <h2 class="my-5">Albums</h2>
+        <table *ngIf="userAlbums" class="table w-100">
+          <thead>
+            <th>Name</th>
+            <th>Actions</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let album of userAlbums" class="text-capitalize">
+              <td>
+                {{ album.title }}
+              </td>
+              <td>
+                <a [routerLink]="['../../album/' + album.id]">
+                  <button class="btn btn-link">View</button>
+                </a>
+                <a (click)="deleteAlbum(album.id)">
+                  <button class="btn btn-link">Delete</button>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <span *ngIf="!userAlbums">No albums to show </span>
+      </div>
+    </div>
+  </div>
+</div>

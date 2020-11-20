@@ -1,0 +1,21 @@
+html, body, app-root {
+  height: 100%;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+h1 {
+  text-transform: capitalize;
+}
+
+.right-0 {
+  right: 0;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
